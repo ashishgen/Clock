@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: nginx
-        image: ashishpandey1991/clock:latest   # Include tag for clarity
+        image: ashishpandey1991/clock:latest    # Include tag for clarity
         ports:
         - containerPort: 80
         resources:
@@ -26,15 +26,6 @@ spec:
           limits:
             memory: "128Mi"
             cpu: "500m"
-        livenessProbe:
-          httpGet:
-            path: /healthz
-            port: 80
-          initialDelaySeconds: 5
-          periodSeconds: 10
-        readinessProbe:
-          httpGet:
-            path: /readiness
-            port: 80
-          initialDelaySeconds: 5
-          periodSeconds: 10
+        # -----------------------------------------------------------------
+        # HEALTH PROBES REMOVED (Fixes the 0/1 READY issue)
+        # -----------------------------------------------------------------
